@@ -16,7 +16,7 @@ Version:		2.5.0
 Summary:	Extract urls from text
 Name:		golang-github-mvdan-xurls
 
-Release:	1
+Release:	2
 Source0:	https://github.com/mvdan/xurls/archive/v%{version}/xurls-%{version}.tar.gz
 %if %{with bootstrap2}
 # Generated from Source100
