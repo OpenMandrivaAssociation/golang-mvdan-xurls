@@ -1,6 +1,6 @@
 %global debug_package %{nil}
 
-%bcond_without bootstrap2
+%bcond_with bootstrap2
 
 # Run tests in check section
 %bcond_with check
