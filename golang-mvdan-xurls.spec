@@ -1,7 +1,5 @@
 %global debug_package %{nil}
 
-%bcond_with bootstrap2
-
 # Run tests in check section
 %bcond_with check
 
@@ -18,20 +16,13 @@ Name:		golang-github-mvdan-xurls
 
 Release:	2
 Source0:	https://github.com/mvdan/xurls/archive/v%{version}/xurls-%{version}.tar.gz
-%if %{with bootstrap2}
-# Generated from Source100
-Source3:	vendor.tar.zst
-Source100:	golang-package-dependencies.sh
-%endif
 URL:		https://github.com/mvdan/xurls
 License:	BSD
 Group:		Development/Other
 BuildRequires:	compiler(go-compiler)
-%if ! %{with bootstrap2}
 BuildRequires:	golang(golang.org/x/mod/module)
 BuildRequires:	golang(golang.org/x/sync/semaphore)
 BuildRequires:	golang-ipath(mvdan.cc/xurls)
-%endif
 %if %{with check}
 BuildRequires:	golang(github.com/rogpeppe/go-internal/testscript)
 %endif
@@ -66,12 +57,6 @@ building other packages which use import path with
 
 %prep
 %autosetup -p1 -n xurls-%{version}
-
-rm -rf vendor
-
-%if %{with bootstrap2}
-tar xf %{S:3}
-%endif
 
 %build
 %gobuildroot
